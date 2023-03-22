@@ -1,0 +1,36 @@
+## This docker-compose runs WordPress with a MySQL database, using PHP 7.2 and phpMyAdmin, adding volumes to store the database data and wp-content.
+## By Jorge Casas on 21/03/2023
+
+version: '3.9'
+
+services:
+
+  wordpress:
+    image: wordpress:php7.2-apache
+    volumes:
+      - ./webData:/var/www/html
+    ports:
+      - 8080:80
+    environment:
+      WORDPRESS_DB_HOST:
+      WORDPRESS_DB_USER:
+      WORDPRESS_DB_PASSWORD:
+      WORDPRESS_DB_NAME:
+    links:
+      - mysql:mysql
+
+  mysql:
+    image: mysql:latest
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_DATABASE:
+      MYSQL_ROOT_PASSWORD:
+    volumes:
+      - ./mysql:/var/lib/mysql
+
+  phpmyadmin:
+       image: phpmyadmin/phpmyadmin
+       ports:
+           - 8081:80
+       environment:
+           - PMA_ARBITRARY=1
