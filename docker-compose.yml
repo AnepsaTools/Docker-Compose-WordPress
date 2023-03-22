@@ -1,4 +1,4 @@
-## This docker-compose runs WordPress with a MySQL database, using PHP 7.2 and phpMyAdmin, adding volumes to store the database data and wp-content.
+## This docker-compose runs WordPress with a MySQL database, using PHP 7.2 and phpMyAdmin, adding volumes to store the database data and wp-content. 
 ## By Jorge Casas on 21/03/2023
 
 version: '3.9'
